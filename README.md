@@ -2,6 +2,8 @@
 
 This repository contains code for a script that runs the [Ookla Speedtest CLI](https://www.speedtest.net/apps/cli) and sends the data to an [InfluxDBv2](https://github.com/influxdata/influxdb) instance.
 
+![Grafana dashboard showing speed test results](/assets/dashboard.jpg)
+
 ## Requirements
 Script can be ran standalone or within a container.
 Running within the container provides the environment required, primarily the speedtest-cli itself.
