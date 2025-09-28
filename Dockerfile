@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
-    apt-get -q -y install --no-install-recommends curl cron
+    apt-get -q -y install --no-install-recommends curl
 
 RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
 
