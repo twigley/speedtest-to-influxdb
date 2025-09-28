@@ -118,7 +118,6 @@ def run_speedtest() -> None:
 
 
 def main() -> None:
-    print(RUN_ONCE)
     if RUN_ONCE:
         logging.info(f"Run once mode")
         run_all()
