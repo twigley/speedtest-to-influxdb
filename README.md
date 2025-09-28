@@ -12,6 +12,10 @@ This script makes use of token authentication which can be created following the
 
 ## Docker
 
+Image is available from ```ghcr.io/twigley/speedtest-to-influxdb:latest```
+
+or build locally:
+
 ```
 docker build ./ -t speedtesttoinflux
 docker run speedtesttoinflux
