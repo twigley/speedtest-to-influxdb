@@ -55,9 +55,9 @@ def format_json_to_influx(jsondata: str) -> list[dict]:
                 "bandwidth": data["upload"]["bandwidth"],
                 "bytes": data["upload"]["bytes"],
                 "elapsed": data["upload"]["elapsed"],
-                "latency_high": float(data["download"]["latency"]["high"]),
-                "latency_low": float(data["download"]["latency"]["low"]),
-                "jitter": float(data["download"]["latency"]["jitter"]),
+                "latency_high": float(data["upload"]["latency"]["high"]),
+                "latency_low": float(data["upload"]["latency"]["low"]),
+                "jitter": float(data["upload"]["latency"]["jitter"]),
             },
         },
         {
