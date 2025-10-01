@@ -75,6 +75,6 @@ All configuration is handled via environment variables:
 | DB_TOKEN | MyTestAdminToken0== | InfluxDB token |
 | DB_ORG | default | InfluxDB organisation |
 | DB_BUCKET | default | InfluxDB bucket|
-| TEST_INTERVAL | 10 | Repeat test every TEST_INTERVAL minutes |
+| TEST_INTERVAL | 30m | Repeat test every TEST_INTERVAL (s, m, h, d for seconds, minutes etc.) |
 | RUN_ONCE | False | Run test once and exit, no schedule |
 | LOG_LEVEL | INFO | Log level one of [ DEBUG, INFO, WARNING, ERROR, CRITICAL ] |
