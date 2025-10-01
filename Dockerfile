@@ -1,20 +1,11 @@
-FROM ghcr.io/astral-sh/uv:python3.13-trixie-slim
+FROM ghcr.io/astral-sh/uv:python3.13-alpine
 
 LABEL maintainer="Tom Wigley" \
     description="Speedtest cli ingestion of stats into influxdb"
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV UV_COMPILE_BYTECODE=1
 
-RUN apt-get update && \
-    apt-get dist-upgrade -y && \
-    apt-get -q -y install --no-install-recommends curl
-
-RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
-
-RUN apt-get update && apt-get -q -y install speedtest && \
-    apt-get -q -y autoremove && \
-    apt-get -q -y clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN wget https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-x86_64.tgz speedtest -q -O - | tar xzvf - -C /bin
 
 # Copy the project into the image
 ADD . /app
