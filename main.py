@@ -25,6 +25,7 @@ DB_BUCKET = os.environ.get("DB_BUCKET", "default")
 TEST_INTERVAL = os.environ.get("TEST_INTERVAL", "30m")
 RUN_ONCE = eval(os.environ.get("RUN_ONCE", "False").title())
 
+
 @dataclass
 class Interval:
     interval: int
@@ -32,19 +33,24 @@ class Interval:
 
     def __init__(self, input: str) -> None:
         mapping = {"s": "seconds", "m": "minutes", "h": "hours", "d": "days"}
-        
-        interval = ''.join(filter(str.isdigit, input))
-        unit = ''.join(filter(str.isalpha, input))
 
-        if unit not in ['s', 'm', 'h', 'd']:
-            raise Exception("Units must be one of second (s), minutes (m), hours (h) or days (d)")
+        interval = "".join(filter(str.isdigit, input))
+        unit = "".join(filter(str.isalpha, input))
+
+        if unit not in ["s", "m", "h", "d"]:
+            raise Exception(
+                "Units must be one of second (s), minutes (m), hours (h) or days (d)"
+            )
         elif len(unit) > 1:
-            raise Exception("Units too long, must be a single character of second (s), minutes (m), hours (h) or days (d)")
+            raise Exception(
+                "Units too long, must be a single character of second (s), minutes (m), hours (h) or days (d)"
+            )
         else:
             unit = mapping[unit]
-        
+
         self.interval = int(interval)
         self.unit = unit
+
 
 def format_json_to_influx(jsondata: str) -> list[dict]:
     data = json.loads(jsondata)
@@ -144,8 +150,10 @@ def main() -> None:
         logging.info(f"Run once mode")
         run_all()
     else:
-        getattr(every(interval.interval),interval.unit).do(run_speedtest)
-        logging.info(f"Running speedtest every {str(interval.interval)} {interval.unit}")
+        getattr(every(interval.interval), interval.unit).do(run_speedtest)
+        logging.info(
+            f"Running speedtest every {str(interval.interval)} {interval.unit}"
+        )
         while 1:
             n = idle_seconds()
             if n is None:
