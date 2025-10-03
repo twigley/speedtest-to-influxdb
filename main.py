@@ -60,7 +60,9 @@ def format_json_to_influx(jsondata: str) -> list[dict]:
             "time": data["timestamp"],
             "fields": {
                 "jitter": float(data["ping"]["jitter"]),
+                "latency_high": float(data["ping"]["high"]),
                 "latency": float(data["ping"]["latency"]),
+                "latency_low": float(data["ping"]["low"]),
             },
         },
         {
@@ -71,6 +73,7 @@ def format_json_to_influx(jsondata: str) -> list[dict]:
                 "bytes": data["download"]["bytes"],
                 "elapsed": data["download"]["elapsed"],
                 "latency_high": float(data["download"]["latency"]["high"]),
+                "latency_iqm": float(data["download"]["latency"]["iqm"]),
                 "latency_low": float(data["download"]["latency"]["low"]),
                 "jitter": float(data["download"]["latency"]["jitter"]),
             },
@@ -83,6 +86,7 @@ def format_json_to_influx(jsondata: str) -> list[dict]:
                 "bytes": data["upload"]["bytes"],
                 "elapsed": data["upload"]["elapsed"],
                 "latency_high": float(data["upload"]["latency"]["high"]),
+                "latency_iqm": float(data["upload"]["latency"]["iqm"]),
                 "latency_low": float(data["upload"]["latency"]["low"]),
                 "jitter": float(data["upload"]["latency"]["jitter"]),
             },
